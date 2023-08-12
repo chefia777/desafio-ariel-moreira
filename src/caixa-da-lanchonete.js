@@ -42,7 +42,7 @@ class CaixaDaLanchonete {
       cafe: ["chantily"],
       sanduiche: ["queijo"],
       combo1: ["queijo"],
-      combo2: ["chantily", "queijo"]
+      combo2: ["chantily", "queijo"],
     };
     const extrasPermitidosNosCombos = {
       combo1: ["suco", "sanduiche"],
@@ -75,8 +75,6 @@ class CaixaDaLanchonete {
 
     for (const itemPedido of itens) {
       const [codigo, _] = itemPedido.split(",");
-
-      // Verificar se o item é um extra permitido nos combos
       if (extrasPermitidosNosCombos[codigo]) {
         for (const extra of extrasPermitidosNosCombos[codigo]) {
           itensExtrasSelecionados.add(extra);
@@ -85,8 +83,6 @@ class CaixaDaLanchonete {
 
       if (codigosItensPrincipais.has(codigo)) {
         itensPrincipaisSelecionados.add(codigo);
-
-        // Verificar se o item tem extras e adicionar ao conjunto de extras selecionados
         if (itensExtrasDoPrincipal[codigo]) {
           itensExtrasSelecionados.add(...itensExtrasDoPrincipal[codigo]);
         }
